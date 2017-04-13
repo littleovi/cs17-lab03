@@ -44,10 +44,39 @@ void test_tempreture_input(){
     is>> t;
     assert(t.value == 28);
     assert(t.scale == Kelvin);
-
-
-
 }
+  tempreture  convert(const tempreture& from, Scale scale){
+      double K;
+      switch(from.scale){
+      case Kelvin:
+          K =  from.value;
+          break;
+      case Celcium:
+          K =  from.value+273,15;
+          break;
+      case Farengheite:
+          K = (from.value+459,67)/1.8;
+          break;
+      }
+      tempreture result;
+      result.scale = scale;
+      switch(scale){
+      case Kelvin:
+          result.value = Kelvin;
+          break;
+      case Celcium:
+          result.value = Kelvin-273,15;
+      break;
+      case Farengheite:
+          result.value = (Kelvin*1,8)-459,67;
+      break;
+      }
+      return result;
+      //switch по шкале температуры  from,
+      // рассчитать K
+      //switch о шкале to
+      //рассчитать значение результата
+  };
 int
 main() {
     size_t number_count;
