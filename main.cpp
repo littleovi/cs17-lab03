@@ -7,10 +7,26 @@ using namespace std;
  };
  struct tempreture{
     Scale scale;
-    double scale;
-
+    double value;
 };
 
+istream& operator >> (istream& in, tempreture& t){
+ in >> t.value;
+    char symbol;
+    in >> symbol;
+    switch(symbol){
+    case 'K':
+        t.scale=Kelvin;
+        break;
+    case 'C':
+        t.scale=Celcium;
+        break;
+    case 'F':
+        t.scale=Farengheite;
+        break;
+    }
+    return in;
+}
 int
 main() {
     size_t number_count;
