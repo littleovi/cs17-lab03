@@ -90,7 +90,7 @@ main() {
     cin >> number_count;
 
     cerr << "Enter numbers: ";
-    vector<double> numbers(number_count);
+    vector<tempreture> numbers(number_count);
     for (size_t i = 0; i < number_count; i++) {
         cin >> numbers[i];
     }
@@ -99,20 +99,22 @@ main() {
     cerr << "Enter column count: ";
     cin >> column_count;
 
-    double min = numbers[0];
-    double max = numbers[0];
-    for (double number : numbers) {
+    tempreture min = numbers[0];
+    tempreture  max = numbers[0];
+    for (tempreture number : numbers) {
         if (number < min) {
             min = number;
         }
-        if (number > max) {
+        if (max < number ) {
             max = number;
         }
     }
-
+    max= convert(max,min.scale);
     vector<size_t> counts(column_count);
-    for (double number : numbers) {
-        size_t column = (size_t)((number - min) / (max - min) * column_count);
+    for (tempreture number : numbers) {
+        number= convert(number, min.scale);
+        size_t column = (size_t)((number.value - min.value ) / (max.value - min.value) *
+                column_count);
         if (column == column_count) {
             column--;
         }
