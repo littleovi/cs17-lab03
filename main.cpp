@@ -77,6 +77,12 @@ void test_tempreture_input(){
       //switch о шкале to
       //рассчитать значение результата
   };
+bool operator < (tempreture& lhs,tempreture& rhs) {
+    tempreture t ;
+    t = convert(lhs, rhs.scale);
+    return t.value < rhs.value ;
+
+}
 int
 main() {
     size_t number_count;
