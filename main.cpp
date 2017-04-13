@@ -2,6 +2,14 @@
 #include <vector>
 
 using namespace std;
+ enum Scale{
+ Kelvin = 'K', Celcium = 'C', Farengheite = 'F'
+ };
+ struct tempreture{
+    Scale scale;
+    double scale;
+
+};
 
 int
 main() {
