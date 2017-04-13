@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-
+#include <sstream>
+#include <cassert>
 using namespace std;
  enum Scale{
  Kelvin = 'K', Celcium = 'C', Farengheite = 'F'
@@ -26,6 +27,26 @@ istream& operator >> (istream& in, tempreture& t){
         break;
     }
     return in;
+}
+void test_tempreture_input(){
+    stringstream in ("17C");
+    tempreture t;
+    in>> t;
+    assert(t.value == 17);
+    assert(t.scale == Celcium);
+
+    stringstream im ("-66F");
+    im>> t;
+    assert(t.value == -66);
+    assert(t.scale == Farengheite);
+
+    stringstream is ("28K");
+    is>> t;
+    assert(t.value == 28);
+    assert(t.scale == Kelvin);
+
+
+
 }
 int
 main() {
