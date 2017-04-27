@@ -23,6 +23,19 @@ void test_tempreture_input(){
     is>> t;
     assert(t.value == 28);
     assert(t.scale == Kelvin);
+
+    stringstream il("Just enjoy the moment");
+    il>> t;
+    assert(!il);
+
+    stringstream ip ("C:");
+    ip>> t;
+    assert(!ip);
+
+    stringstream ir("13milky way");
+    ir>> t;
+    assert(!ir);
+
 }
 
 
@@ -36,6 +49,10 @@ main() {
     vector<tempreture> numbers(number_count);
     for (size_t i = 0; i < number_count; i++) {
         cin >> numbers[i];
+        if(!cin){
+            cerr<<"all is bad :(";
+        return 1;
+        }
     }
 
     size_t column_count;

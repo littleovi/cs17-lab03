@@ -5,10 +5,16 @@
 
 using namespace std;
 
-istream& operator >> (istream& in, tempreture& t){
+istream& operator >> (istream& in, tempreture& t) {
     in >> t.value;
+    if (!in) {
+        in.setstate(ios_base::failbit);
+        return in;
+    }
+
     char symbol;
     in >> symbol;
+
     switch(symbol){
     case 'K':
         t.scale=Kelvin;
@@ -19,6 +25,12 @@ istream& operator >> (istream& in, tempreture& t){
     case 'F':
         t.scale=Farengheite;
         break;
+    }
+    tempreture T;
+    T = convert(t, Kelvin);
+    if (T.value < 0) {
+        in.setstate(ios_base::failbit);
+        return in;
     }
     return in;
 }
