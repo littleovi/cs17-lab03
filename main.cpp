@@ -2,14 +2,9 @@
 #include <vector>
 #include <sstream>
 #include <cassert>
+#include "tempreture.h"
 using namespace std;
- enum Scale{
- Kelvin = 'K', Celcium = 'C', Farengheite = 'F'
- };
- struct tempreture{
-    Scale scale;
-    double value;
-};
+
 
 istream& operator >> (istream& in, tempreture& t){
  in >> t.value;
