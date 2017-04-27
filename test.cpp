@@ -30,8 +30,8 @@ int main(){
     ip>> t;
     assert(!ip);
 
-    stringstream ir("13milky way");
-    ir>> t;
-    assert(!ir);
+    stringstream ik("13milky way");
+    ik>> t;
+    assert(!ik);
 
 }

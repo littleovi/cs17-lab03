@@ -25,6 +25,9 @@ istream& operator >> (istream& in, tempreture& t) {
     case 'F':
         t.scale=Farengheite;
         break;
+    default:
+        in.setstate(ios_base::failbit);
+        return in;
     }
     tempreture T;
     T = convert(t, Kelvin);
